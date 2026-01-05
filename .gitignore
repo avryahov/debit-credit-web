@@ -1,0 +1,34 @@
+# зависимости
+node_modules/
+
+# сборка
+dist/
+build/
+
+# локальные конфиги
+.env
+.env.local
+.env.*.local
+
+# IDE / редакторы
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# логи
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# временное
+tmp/
+temp/
+
+# macOS
+._*
+
+# тесты (если не пишем unit-тесты)
+coverage/
