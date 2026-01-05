@@ -10,6 +10,10 @@
   color: $text-light;
   font-family: 'Arial', sans-serif;
 
+  // Безопасность для 3D-анимаций
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
   &__title {
     margin-bottom: 2rem;
     font-size: 1.5rem;
@@ -30,16 +34,16 @@
   }
 }
 
-// Анимация появления — как будто из глубины
+// Анимация появления — плавное увеличение и появление
 .pin-screen--enter {
   opacity: 0;
-  transform: scale(0.8) translateZ(500px);
-  animation: zoomIn 0.8s ease-out forwards;
+  transform: scale(0.8);
+  animation: fadeInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-@keyframes zoomIn {
+@keyframes fadeInScale {
   to {
     opacity: 1;
-    transform: scale(1) translateZ(0);
+    transform: scale(1);
   }
 }
