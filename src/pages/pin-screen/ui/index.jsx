@@ -3,7 +3,7 @@ import styles from './pin-screen.module.scss';
 
 export const PinScreen = () => {
   return (
-    <div className={styles['pin-screen']}>
+    <div className={`${styles['pin-screen']} ${styles['pin-screen--enter']}`}>
       <h2 className={styles['pin-screen__title']}>Введите ПИН</h2>
       <div className={styles['pin-screen__input']}>
         <PinInput count={4} />

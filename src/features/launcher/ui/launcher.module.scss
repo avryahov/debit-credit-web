@@ -9,11 +9,12 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  perspective: 1000px; /* Эффект глубины */
 }
 
 .launcher__content {
   text-align: center;
-  animation: fadeIn 0.6s ease-out;
+  animation: zoomOut 1s ease-out forwards;
 }
 
 .launcher__title {
@@ -35,14 +36,10 @@
 }
 
 // Анимации
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
+@keyframes zoomOut {
   to {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0;
+    transform: scale(0.5) translateZ(-500px);
   }
 }
 
