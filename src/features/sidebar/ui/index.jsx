@@ -1,9 +1,9 @@
 import styles from '../sidebar.module.scss';
 
-export const Sidebar = ({ isCollapsed }) => {
+export const Sidebar = ({ isCollapsed, className }) => {
   return (
     <aside
-      className={`${styles.sidebar} ${isCollapsed ? styles['sidebar--collapsed'] : ''}`}
+      className={`${styles.sidebar} ${isCollapsed ? styles['sidebar--collapsed'] : ''} ${className}`}
     >
       <div className={styles.sidebar__header}>
         <h3>Счета</h3>
@@ -15,7 +15,6 @@ export const Sidebar = ({ isCollapsed }) => {
           <li>Наши карточки — 55 352,32 ₽</li>
           <li>T-Банк Premium — 39 033,59 ₽</li>
           <li>Сбербанк мужа — 6 900,79 ₽</li>
-          {/* ... */}
         </ul>
       </nav>
     </aside>
