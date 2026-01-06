@@ -1,0 +1,78 @@
+// Переменные — как в HTML-эталоне
+:root {
+  --accent-blue: #4a90e2;
+  --text-light: #ffffff;
+  --bg-dark: #0f0f0f;
+  --bg-item: rgba(30, 30, 30, 0.7);
+  --bg-sub: rgba(40, 40, 40, 0.6);
+  --border-light: rgba(255, 255, 255, 0.05);
+  --hover-bg: rgba(40, 40, 40, 0.8);
+  --open-bg: rgba(50, 50, 50, 0.9);
+  --open-border: rgba(74, 144, 226, 0.3);
+  --positive: #4caf50;
+  --negative: #f44336;
+  --font-family-mono:
+    'SFMono-Regular', 'SF Mono', ui-monospace, Consolas, 'Liberation Mono',
+    Menlo, monospace;
+  --radius: 16px;
+  --row-height: 56px;
+  --sub-gap: 8px;
+  --name-max-width: 180px;
+}
+
+.sub-account {
+  background: var(--bg-sub);
+  border-radius: 12px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  height: var(--row-height);
+  color: var(--text-light);
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+
+  &:hover {
+    background: rgba(50, 50, 50, 0.7);
+  }
+
+  &__icon {
+    color: var(--accent-blue);
+    font-size: 18px;
+    opacity: 0.8;
+    width: 20px;
+    text-align: center;
+  }
+
+  &__name {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+
+  &__balance {
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    justify-content: flex-end;
+    gap: 3px;
+    font-size: 14px;
+    font-weight: 500;
+
+    &--negative {
+      color: var(--negative);
+    }
+
+    &--positive {
+      color: var(--positive);
+    }
+
+    &-currency {
+      color: #aaa;
+      font-size: 14px;
+    }
+  }
+}

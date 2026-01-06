@@ -1,0 +1,45 @@
+import { MOCK_ACCOUNTS_TREE } from '../../shared/constants/mock-accounts-tree';
+import styles from './sidebar.module.scss';
+import { AccountFolder, SubAccount } from './ui';
+
+export const Sidebar = ({ isCollapsed }) => {
+  const handleFolderClick = (transactionId) => {
+    console.log('Clicked folder/account:', transactionId);
+  };
+
+  return (
+    <aside
+      className={`${styles.sidebar} ${isCollapsed ? styles['sidebar--collapsed'] : ''}`}
+    >
+      <div className={styles.sidebar__header}>
+        <h3>Счета</h3>
+      </div>
+      <div className={styles.sidebar__nav}>
+        {MOCK_ACCOUNTS_TREE.map((folder) => (
+          <div key={folder.id} className={styles['sidebar__item']}>
+            <AccountFolder
+              icon={folder.icon}
+              name={folder.name}
+              balance={folder.balance}
+              transactionId={folder.transactionId}
+              isFolder={folder.isFolder}
+              onFolderClick={handleFolderClick}
+            >
+              {folder.children?.map((child) => (
+                <SubAccount
+                  key={child.id}
+                  icon={child.icon}
+                  name={child.name}
+                  balance={child.balance}
+                  transactionId={child.transactionId}
+                />
+              ))}
+            </AccountFolder>
+          </div>
+        ))}
+      </div>
+    </aside>
+  );
+};
+
+export default Sidebar;
