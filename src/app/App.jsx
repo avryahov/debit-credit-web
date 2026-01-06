@@ -1,28 +1,24 @@
 import { useEffect, useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Launcher } from '../features/launcher';
-import { PinScreen } from '../pages/pin-screen';
 import './App.css';
 
 function App() {
   const [showLauncher, setShowLauncher] = useState(true);
-  const [showPinScreen, setShowPinScreen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLauncher(false);
-      // Начинаем показывать PIN-экран через 0.5 сек после скрытия лаунчера
-      setTimeout(() => setShowPinScreen(true), 500);
-    }, 1500); // 1.5 секунды
+      setTimeout(() => {
+        navigate('/pin', { replace: true });
+      }, 500);
+    }, 1500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigate]);
 
-  return (
-    <div className="App">
-      {showLauncher && <Launcher />}
-      {showPinScreen && <PinScreen />}
-    </div>
-  );
+  return <div className="App">{showLauncher ? <Launcher /> : <Outlet />}</div>;
 }
 
 export default App;
