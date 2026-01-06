@@ -1,12 +1,10 @@
-@import '../../../shared/styles/variables.scss';
-
 .launcher {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #2d2d2d;
+  background-color: var(--background-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +18,7 @@
 }
 
 .launcher__title {
-  color: #ffffff;
+  color: var(--text-light);
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -30,8 +28,8 @@
 .launcher__spinner {
   width: 24px;
   height: 24px;
-  border: 3px solid #333;
-  border-top-color: #4a90e2;
+  border: 3px solid var(--input-border);
+  border-top-color: var(--accent-blue);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto;
@@ -41,7 +39,7 @@
 @keyframes zoomOut {
   to {
     opacity: 0;
-    transform: scale(0.5); /* Убрали translateZ */
+    transform: scale(0.5);
   }
 }
 

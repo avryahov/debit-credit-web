@@ -1,6 +1,21 @@
+:root {
+  /* Фон */
+  --background-dark: #2d2d2d;
+  --input-bg: #1e1e1e;
+  --input-border: #333333;
+
+  /* Текст */
+  --text-light: #ffffff;
+  --text-secondary: #aaaaaa;
+
+  /* Акцент */
+  --accent-blue: #4a90e2;
+  --input-focus: var(--accent-blue);
+}
+
 .App {
   text-align: center;
-  background-color: #2d2d2d;
+  background-color: var(--background-dark);
   min-height: 100vh;
   width: 100vw;
   display: flex;
@@ -8,5 +23,5 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-light);
 }

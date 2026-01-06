@@ -1,13 +1,11 @@
-@import '../../../shared/styles/variables.scss';
-
 .pin-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: $background-dark;
-  color: $text-light;
+  background-color: var(--background-dark);
+  color: var(--text-light);
   font-family: 'Arial', sans-serif;
 
   // Безопасность для 3D-анимаций
@@ -28,7 +26,7 @@
 
   &__hint {
     font-size: 0.875rem;
-    color: $text-secondary;
+    color: var(--text-secondary);
     text-align: center;
     max-width: 80%;
   }
