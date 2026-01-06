@@ -1,0 +1,36 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--input-border);
+    font-size: 0.875rem;
+  }
+
+  th {
+    background-color: var(--input-bg);
+    font-weight: 600;
+  }
+
+  tr:hover {
+    background-color: var(--input-border);
+  }
+
+  td {
+    &:nth-child(6) {
+      color: #ff4d4f; /* красный для расхода */
+      text-align: right;
+    }
+
+    &:nth-child(6):not(:contains('-')) {
+      color: #52c41a; /* зелёный для дохода */
+    }
+  }
+}

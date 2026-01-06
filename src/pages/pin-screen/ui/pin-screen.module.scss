@@ -6,41 +6,25 @@
   background-color: var(--background-dark);
   color: var(--text-light);
   font-family: 'Arial', sans-serif;
-
-  // Безопасность для 3D-анимаций
   backface-visibility: hidden;
   transform-style: preserve-3d;
-
-  &__title {
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-
-  &__input {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  &__hint {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    text-align: center;
-    max-width: 80%;
-  }
 }
 
-// Анимация появления — плавное увеличение и появление
-.pin-screen--enter {
-  opacity: 0;
-  transform: scale(0.8);
-  animation: fadeInScale 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.pin-screen__title {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
-@keyframes fadeInScale {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.pin-screen__input {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.pin-screen__hint {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 80%;
 }
