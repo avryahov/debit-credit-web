@@ -1,8 +1,39 @@
+import {
+  faArchive,
+  faCalendarCheck,
+  faChartLine,
+  faChartPie,
+  faChevronRight,
+  faCreditCard,
+  faFileAlt,
+  faFolder,
+  faGlobe,
+  faGraduationCap,
+  faLandmark,
+  faWallet,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+
 import { useAdaptiveText } from 'shared/hooks/use-adaptive-text';
 import { formatBalance, isBalanceNegative } from 'shared/utils/format-balance';
 import styles from './account-folder.module.scss';
+
+// Сопоставление иконок из mock-accounts-tree.js с FontAwesome icons
+const ICON_MAP = {
+  'fa-solid fa-folder': faFolder,
+  'fa-solid fa-credit-card': faCreditCard,
+  'fa-solid fa-chart-line': faChartLine,
+  'fa-solid fa-graduation-cap': faGraduationCap,
+  'fa-solid fa-globe': faGlobe,
+  'fa-solid fa-landmark': faLandmark,
+  'fa-solid fa-archive': faArchive,
+  'fa-solid fa-wallet': faWallet,
+  'fa-solid fa-calendar-check': faCalendarCheck,
+  'fa-solid fa-chart-pie': faChartPie,
+  'fa-solid fa-file-alt': faFileAlt,
+};
 
 export const AccountFolder = ({
   icon = '📁',
@@ -33,6 +64,9 @@ export const AccountFolder = ({
   const nameRef = React.useRef(null);
   const adaptiveName = useAdaptiveText(name, nameRef);
 
+  // Получаем иконку из ICON_MAP, если она есть, иначе используем дефолтную
+  const faIcon = ICON_MAP[icon] || faFolder;
+
   return (
     <div
       className={`${styles['account-folder-wrapper']} ${
@@ -49,7 +83,9 @@ export const AccountFolder = ({
           isFolder ? `sub-accounts-${name.replace(/\s+/g, '-')}` : undefined
         }
       >
-        <span className={styles['account-folder__icon']}>{icon}</span>
+        <span className={styles['account-folder__icon']}>
+          <FontAwesomeIcon icon={faIcon} />
+        </span>
         <span
           className={styles['account-folder__name']}
           title={name}
@@ -73,7 +109,14 @@ export const AccountFolder = ({
           </span>
         </span>
         <span className={styles['account-folder__chevron']}>
-          {isFolder && <i className="fa-solid fa-chevron-right"></i>}
+          {isFolder && (
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className={
+                isOpen ? styles['account-folder__chevron--rotated'] : ''
+              }
+            />
+          )}
         </span>
       </div>
       {isFolder && (

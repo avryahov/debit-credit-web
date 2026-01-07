@@ -1,7 +1,7 @@
 /**
  * @typedef {Object} AccountNode
  * @property {string} id — уникальный идентификатор
- * @property {string} icon — эмодзи или символ иконки
+ * @property {string} icon — класс FA-иконки (например, 'fa-solid fa-folder')
  * @property {string} name — название папки/счета
  * @property {string | null} [balance] — баланс (null/undefined = не отображается)
  * @property {AccountNode[]} [children] — вложенные элементы (для папок)
@@ -16,15 +16,15 @@
 export const MOCK_ACCOUNTS_TREE = [
   {
     id: 'default',
-    icon: '📁',
+    icon: 'fa-solid fa-folder',
     name: 'Счета',
     balance: null,
     isFolder: false,
-    transactionId: 'default', // ← ссылка на таблицу
+    transactionId: 'default',
   },
   {
     id: 'cards',
-    icon: '💳',
+    icon: 'fa-solid fa-credit-card',
     name: 'Наши карточки',
     balance: '55 303,32',
     isFolder: true,
@@ -108,11 +108,11 @@ export const MOCK_ACCOUNTS_TREE = [
         transactionId: 'pochtabank-debit-m',
       },
     ],
-    transactionId: 'cards', // ← таблица для всей папки
+    transactionId: 'cards',
   },
   {
     id: 'investments',
-    icon: '📈',
+    icon: 'fa-solid fa-chart-line',
     name: 'Инвестиции',
     balance: '300 100,41',
     isFolder: true,
@@ -161,20 +161,20 @@ export const MOCK_ACCOUNTS_TREE = [
       },
       { id: 'iis', name: 'ИИС', balance: '0,00', transactionId: 'iis' },
     ],
-    transactionId: 'investments', // ← таблица для всей папки
+    transactionId: 'investments',
   },
   {
     id: 'credit-cards',
-    icon: '🏦',
+    icon: 'fa-solid fa-credit-card',
     name: 'Кредитки',
     balance: '-1 297 326,36',
     isFolder: true,
     children: [],
-    transactionId: 'credit-cards', // ← таблица для всей папки
+    transactionId: 'credit-cards',
   },
   {
     id: 'big-loans',
-    icon: '💸',
+    icon: 'fa-solid fa-money-bill-wave',
     name: 'Большие кредиты',
     balance: '-3 052 887,68',
     isFolder: true,
@@ -210,20 +210,20 @@ export const MOCK_ACCOUNTS_TREE = [
         transactionId: 'gpb-tech',
       },
     ],
-    transactionId: 'big-loans', // ← таблица для всей папки
+    transactionId: 'big-loans',
   },
   {
     id: 'services',
-    icon: '📚',
+    icon: 'fa-solid fa-book',
     name: 'Сервисы',
     balance: null,
     isFolder: true,
     children: [],
-    transactionId: 'services', // ← таблица для всей папки
+    transactionId: 'services',
   },
   {
     id: 'courses',
-    icon: '🎓',
+    icon: 'fa-solid fa-graduation-cap',
     name: 'Расрочка и кредиты на курсы',
     balance: '-92 276,67',
     isFolder: true,
@@ -241,29 +241,29 @@ export const MOCK_ACCOUNTS_TREE = [
         transactionId: 'sovcom-devops',
       },
     ],
-    transactionId: 'courses', // ← таблица для всей папки
+    transactionId: 'courses',
   },
   {
     id: 'network',
-    icon: '🌐',
+    icon: 'fa-solid fa-globe',
     name: 'Сеть',
     balance: '1 441,38',
     isFolder: true,
     children: [],
-    transactionId: 'network', // ← таблица для всей папки
+    transactionId: 'network',
   },
   {
     id: 'pochtabank-loans',
-    icon: '🏛️',
+    icon: 'fa-solid fa-landmark',
     name: 'Кредиты ПочтаБанка',
     balance: '-69 690,39',
     isFolder: true,
     children: [],
-    transactionId: 'pochtabank-loans', // ← таблица для всей папки
+    transactionId: 'pochtabank-loans',
   },
   {
     id: 'sberbank-loans',
-    icon: '🏛️',
+    icon: 'fa-solid fa-landmark',
     name: 'Кредиты Сбербанка',
     balance: '-1 001 379,85',
     isFolder: true,
@@ -413,60 +413,60 @@ export const MOCK_ACCOUNTS_TREE = [
         transactionId: 'sber-macbook',
       },
     ],
-    transactionId: 'sberbank-loans', // ← таблица для всей папки
+    transactionId: 'sberbank-loans',
   },
   {
     id: 'archive',
-    icon: '📂',
+    icon: 'fa-solid fa-archive',
     name: 'Архив',
     balance: null,
     isFolder: true,
     children: [],
-    transactionId: 'archive', // ← таблица для всей папки
+    transactionId: 'archive',
   },
   {
     id: 'homecredit-loans',
-    icon: '🏛️',
+    icon: 'fa-solid fa-landmark',
     name: 'Кредиты HomeCredit',
     balance: null,
     isFolder: true,
     children: [],
-    transactionId: 'homecredit-loans', // ← таблица для всей папки
+    transactionId: 'homecredit-loans',
   },
   {
     id: 'budgets',
-    icon: '💰',
+    icon: 'fa-solid fa-wallet',
     name: 'Бюджеты',
     balance: null,
     isFolder: true,
     children: [],
-    transactionId: 'budgets', // ← таблица для всей папки
+    transactionId: 'budgets',
   },
   {
     id: 'planned',
-    icon: '📅',
+    icon: 'fa-solid fa-calendar-check',
     name: 'Запланированные',
     balance: null,
     isFolder: true,
     children: [],
-    transactionId: 'planned', // ← таблица для всей папки
+    transactionId: 'planned',
   },
   {
     id: 'plans',
-    icon: '📊',
+    icon: 'fa-solid fa-chart-pie',
     name: 'Планы',
     balance: null,
     isFolder: true,
     children: [],
-    transactionId: 'plans', // ← таблица для всей папки
+    transactionId: 'plans',
   },
   {
     id: 'reports',
-    icon: '📝',
+    icon: 'fa-solid fa-file-alt',
     name: 'Отчеты',
     balance: null,
     isFolder: true,
     children: [],
-    transactionId: 'reports', // ← таблица для всей папки
+    transactionId: 'reports',
   },
 ];

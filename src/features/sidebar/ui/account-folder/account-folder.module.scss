@@ -117,3 +117,10 @@ $account-folder-gap-name: 8px;
     padding-left: 48px;
   }
 }
+
+.account-folder__chevron {
+  &--rotated {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease;
+  }
+}
