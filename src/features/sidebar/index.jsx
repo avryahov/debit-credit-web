@@ -3,11 +3,7 @@ import { MOCK_ACCOUNTS_TREE } from '../../shared/constants/mock-accounts-tree';
 import styles from './sidebar.module.scss';
 import { AccountFolder, SubAccount } from './ui';
 
-export const Sidebar = ({ isCollapsed }) => {
-  const handleFolderClick = (transactionId) => {
-    console.log('Clicked folder/account:', transactionId);
-  };
-
+export const Sidebar = ({ isCollapsed, onSelectAccount }) => {
   return (
     <aside
       className={`${styles.sidebar} ${isCollapsed ? styles['sidebar--collapsed'] : ''}`}
@@ -24,7 +20,7 @@ export const Sidebar = ({ isCollapsed }) => {
               balance={folder.balance}
               transactionId={folder.transactionId}
               isFolder={folder.isFolder}
-              onFolderClick={handleFolderClick}
+              onSelectAccount={onSelectAccount}
             >
               {folder.children?.map((child) => (
                 <SubAccount
@@ -33,6 +29,7 @@ export const Sidebar = ({ isCollapsed }) => {
                   name={child.name}
                   balance={child.balance}
                   transactionId={child.transactionId}
+                  onSelectAccount={onSelectAccount}
                 />
               ))}
             </AccountFolder>
@@ -45,6 +42,7 @@ export const Sidebar = ({ isCollapsed }) => {
 
 Sidebar.propTypes = {
   isCollapsed: PropTypes.bool.isRequired,
+  onSelectAccount: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

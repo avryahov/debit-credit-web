@@ -23,14 +23,55 @@
     background-color: var(--input-border);
   }
 
-  td {
-    &:nth-child(6) {
-      color: #ff4d4f; /* красный для расхода */
-      text-align: right;
-    }
+  /* === Анимация обновления строк === */
+  .row--fade-out {
+    animation: fadeOut 150ms ease-out forwards;
+  }
 
-    &:nth-child(6):not(:contains('-')) {
-      color: #52c41a; /* зелёный для дохода */
+  .row--fade-in {
+    animation: fadeIn 200ms ease-in 50ms forwards;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
     }
+    to {
+      opacity: 0;
+      transform: translateY(-3px);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* === Стили ячеек === */
+  .cell--amount {
+    text-align: right;
+    font-weight: 500;
+  }
+
+  .cell--negative {
+    color: var(--negative);
+  }
+
+  .cell--positive {
+    color: var(--positive);
+  }
+
+  .empty-cell {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 1rem;
   }
 }

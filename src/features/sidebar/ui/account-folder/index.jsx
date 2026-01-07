@@ -15,12 +15,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-
 import { useAdaptiveText } from 'shared/hooks/use-adaptive-text';
 import { formatBalance, isBalanceNegative } from 'shared/utils/format-balance';
 import styles from './account-folder.module.scss';
 
-// Сопоставление иконок из mock-accounts-tree.js с FontAwesome icons
 const ICON_MAP = {
   'fa-solid fa-folder': faFolder,
   'fa-solid fa-credit-card': faCreditCard,
@@ -40,31 +38,39 @@ export const AccountFolder = ({
   name,
   balance,
   children = [],
-  onFolderClick,
+  transactionId,
+  isFolder,
+  onSelectAccount,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const isFolder = children.length > 0;
-  const toggle = () => {
-    if (onFolderClick) {
-      onFolderClick();
+  const hasChildren = children.length > 0;
+
+  const handleFolderClick = (e) => {
+    if (transactionId && typeof onSelectAccount === 'function') {
+      onSelectAccount(transactionId);
     }
-    if (isFolder) {
-      setIsOpen(!isOpen);
+    if (hasChildren) {
+      setIsOpen((prev) => !prev);
+    }
+  };
+
+  const handleChevronClick = (e) => {
+    e.stopPropagation();
+    if (hasChildren) {
+      setIsOpen((prev) => !prev);
     }
   };
 
   let displayBalance = '';
   let isNegative = false;
-  if (balance) {
+  if (balance != null) {
     displayBalance = formatBalance(balance);
     isNegative = isBalanceNegative(balance);
   }
 
-  // Создаем ref для элемента с названием
   const nameRef = React.useRef(null);
   const adaptiveName = useAdaptiveText(name, nameRef);
 
-  // Получаем иконку из ICON_MAP, если она есть, иначе используем дефолтную
   const faIcon = ICON_MAP[icon] || faFolder;
 
   return (
@@ -75,12 +81,12 @@ export const AccountFolder = ({
     >
       <div
         className={styles['account-folder']}
-        onClick={toggle}
+        onClick={handleFolderClick}
         role="button"
         tabIndex={0}
         aria-expanded={isOpen}
         aria-controls={
-          isFolder ? `sub-accounts-${name.replace(/\s+/g, '-')}` : undefined
+          hasChildren ? `sub-accounts-${name.replace(/\s+/g, '-')}` : undefined
         }
       >
         <span className={styles['account-folder__icon']}>
@@ -89,11 +95,10 @@ export const AccountFolder = ({
         <span
           className={styles['account-folder__name']}
           title={name}
-          ref={nameRef} // 👈 привязываем ref
+          ref={nameRef}
         >
           {adaptiveName}
         </span>
-        {/* Объединяем баланс и валюту в один блок */}
         <span className={styles['account-folder__balance-container']}>
           <span
             className={`${styles['account-folder__balance-value']} ${
@@ -105,11 +110,14 @@ export const AccountFolder = ({
             {displayBalance}
           </span>
           <span className={styles['account-folder__balance-currency']}>
-            {balance ? '₽' : ''}
+            {balance != null ? '₽' : ''}
           </span>
         </span>
-        <span className={styles['account-folder__chevron']}>
-          {isFolder && (
+        <span
+          className={styles['account-folder__chevron']}
+          onClick={handleChevronClick}
+        >
+          {hasChildren && (
             <FontAwesomeIcon
               icon={faChevronRight}
               className={
@@ -119,7 +127,8 @@ export const AccountFolder = ({
           )}
         </span>
       </div>
-      {isFolder && (
+
+      {hasChildren && (
         <div
           id={`sub-accounts-${name.replace(/\s+/g, '-')}`}
           className={styles['account-folder__sub-accounts']}
@@ -137,13 +146,16 @@ AccountFolder.propTypes = {
   name: PropTypes.string.isRequired,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   children: PropTypes.arrayOf(PropTypes.node),
-  onFolderClick: PropTypes.func,
+  transactionId: PropTypes.string,
+  isFolder: PropTypes.bool,
+  onSelectAccount: PropTypes.func.isRequired,
 };
 
 AccountFolder.defaultProps = {
   icon: '📁',
   children: [],
-  onFolderClick: undefined,
+  transactionId: undefined,
+  isFolder: false,
 };
 
 export default AccountFolder;

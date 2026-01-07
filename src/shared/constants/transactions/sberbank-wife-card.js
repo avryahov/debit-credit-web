@@ -1,0 +1,111 @@
+// ./src/shared/constants/transactions/sberbank-wife-card.js
+/**
+ * Транзакции для счета "Сбербанк – кредитка жены"
+ * @type {Transaction[]}
+ */
+export const SBERBANK_WIFE_CARD_TRANSACTIONS = [
+  {
+    id: 'tx-sber-w-1',
+    date: '6 января 2026 г. в 16:10',
+    description:
+      'Тренажер для жевания I-трубочка soft, розовая (рельефная) при аутизме, при СДВГ и для ребенка с особыми потребностями',
+    category: 'Детские товары',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-429,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-2',
+    date: '5 января 2026 г. в 20:09',
+    description:
+      'Органайзер для проводов и сетевого фильтра, кабель канал для стола Ergostol X-Tray Pro 0.4 – 0.7 м, держатель для проводов, черный',
+    category: 'Покупки',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-2 306,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-3',
+    date: '3 января 2026 г. в 16:40',
+    description:
+      'Перчатки одноразовые медицинские Нитриловые Archdale NitrilMAX XL 50 пар x2',
+    category: 'Домашние принадлежности',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-1 281,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-4',
+    date: '3 января 2026 г. в 16:40',
+    description:
+      'Сенсорный дозатор для жидкого мыла Simpleway диспенсер Xiaomi с мылом-пеной, дикие цветы',
+    category: 'Детские товары',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-1 145,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-5',
+    date: '3 января 2026 г. в 16:33',
+    description: 'Невельская,24-Гаранькина,23',
+    category: 'Такси',
+    contractor: 'Яндекс.Go',
+    tag: '',
+    amount: '-417,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-6',
+    date: '3 января 2026 г. в 14:14',
+    description: 'Дом-Невельская,24',
+    category: 'Такси',
+    contractor: 'Яндекс.Go',
+    tag: '',
+    amount: '-417,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-7',
+    date: '3 января 2026 г. в 13:52',
+    description: 'Пеленка',
+    category: 'Лекарства',
+    contractor: 'Фармаленд',
+    tag: '',
+    amount: '-41,70 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-8',
+    date: '2 января 2026 г. в 19:24',
+    description: 'Кронштейны дя неттопов',
+    category: 'Покупки',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-1 935,81 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-9',
+    date: '30 декабря 2025 г. в 23:54',
+    description: '',
+    category: '',
+    contractor: '',
+    tag: '',
+    amount: '-100,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-sber-w-10',
+    date: '30 декабря 2025 г. в 20:06',
+    description: 'Бенгальские огни 2 пч',
+    category: 'Покупки',
+    contractor: 'КормаБ6',
+    tag: '',
+    amount: '-200,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+];

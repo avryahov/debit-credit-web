@@ -1,0 +1,111 @@
+// ./src/shared/constants/transactions/credit-cards.js
+/**
+ * Транзакции для папки "Кредитки"
+ * @type {Transaction[]}
+ */
+export const CREDIT_CARDS_TRANSACTIONS = [
+  {
+    id: 'tx-credit-1',
+    date: '6 января 2026 г. в 16:10',
+    description:
+      'Тренажер для жевания I-трубочка soft, розовая (рельефная) при аутизме, при СДВГ и для ребенка с особыми потребностями',
+    category: 'Детские товары',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-429,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-credit-2',
+    date: '6 января 2026 г. в 15:00',
+    description: 'Погашение кредита',
+    category: '',
+    contractor: '',
+    tag: '',
+    amount: '+3 100,00 ₽',
+    account: 'Яндекс.Сплит2',
+  },
+  {
+    id: 'tx-credit-3',
+    date: '5 января 2026 г. в 20:09',
+    description:
+      'Органайзер для проводов и сетевого фильтра, кабель канал для стола Ergostol X-Tray Pro 0.4 – 0.7 м, держатель для проводов,...',
+    category: 'Покупки',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-2 306,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-credit-4',
+    date: '5 января 2026 г. в 19:19',
+    description: 'Продукты',
+    category: 'Продукты',
+    contractor: 'Летний луг',
+    tag: '',
+    amount: '-504,14 ₽',
+    account: 'Сбербанк – кредитка мужа',
+  },
+  {
+    id: 'tx-credit-5',
+    date: '5 января 2026 г. в 18:34',
+    description: 'Груминг',
+    category: 'Для животных',
+    contractor: 'КормаБ6',
+    tag: '',
+    amount: '-2 700,00 ₽',
+    account: 'Сбербанк – кредитка мужа',
+  },
+  {
+    id: 'tx-credit-6',
+    date: '4 января 2026 г. в 16:13',
+    description: 'Заказ печатного свидетельства кирилица',
+    category: 'Startup',
+    contractor: 'Роспатент',
+    tag: '',
+    amount: '-3 000,00 ₽',
+    account: 'Сбербанк – кредитка мужа',
+  },
+  {
+    id: 'tx-credit-7',
+    date: '4 января 2026 г. в 16:11',
+    description: 'Финальная пошлина на латиницу',
+    category: 'Startup',
+    contractor: 'Роспатент',
+    tag: '',
+    amount: '-18 000,00 ₽',
+    account: 'Сбербанк – кредитка мужа',
+  },
+  {
+    id: 'tx-credit-8',
+    date: '3 января 2026 г. в 16:40',
+    description:
+      'Перчатки одноразовые медицинские Нитриловые Archdale NitrilMAX XL 50 пар x2',
+    category: 'Домашние принадлежности',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-1 281,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-credit-9',
+    date: '3 января 2026 г. в 16:40',
+    description:
+      'Сенсорный дозатор для жидкого мыла Simpleway диспенсер Xiaomi с мылом-пеной, дикие цветы',
+    category: 'Детские товары',
+    contractor: 'OZON',
+    tag: '',
+    amount: '-1 145,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+  {
+    id: 'tx-credit-10',
+    date: '3 января 2026 г. в 16:33',
+    description: 'Невельская,24-Гаранькина,23',
+    category: 'Такси',
+    contractor: 'Яндекс.Go',
+    tag: '',
+    amount: '-417,00 ₽',
+    account: 'Сбербанк – кредитка жены',
+  },
+];
