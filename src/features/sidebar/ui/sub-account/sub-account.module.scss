@@ -1,7 +1,9 @@
 // === Переменные ===
 $sub-account-height: var(--row-height);
-$padding-x: 16px;
+$padding-x: 8px;
 $sub-account-icon-width: 24px;
+$sub-account-balance-value-width: 90px;
+$sub-account-currency-width: 20px;
 $sub-account-chevron-width: 24px;
 $sub-account-gap-icon: 8px;
 $sub-account-gap-name: 8px;
@@ -43,37 +45,33 @@ $sub-account-gap-name: 8px;
     margin-right: $sub-account-gap-name;
     font-weight: 500;
 
-    // Убираем display: none на маленьких экранах — теперь хук сам сократит текст
-    // @media (max-width: 360px) {
-    //   display: none;
-    // }
-  }
-
-  &__balance-container {
-    display: flex;
-    align-items: center;
-    gap: 6px; // отступ между балансом и валютой
-    flex-shrink: 0;
-    white-space: nowrap; // чтобы баланс и валюта не разрывались
+    @media (max-width: 360px) {
+      display: none;
+    }
   }
 
   &__balance-value {
+    width: $sub-account-balance-value-width;
     text-align: right;
     flex-shrink: 0;
     font-weight: 500;
+
     &--negative {
       color: var(--negative);
     }
+
     &--positive {
       color: var(--positive);
     }
   }
 
   &__balance-currency {
+    width: $sub-account-currency-width;
     text-align: left;
     flex-shrink: 0;
     color: #aaa;
     font-size: 14px;
+    margin-left: 6px;
   }
 
   &__chevron {

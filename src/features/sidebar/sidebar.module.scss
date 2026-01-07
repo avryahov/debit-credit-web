@@ -1,5 +1,5 @@
 .sidebar {
-  width: 420px; // Базовая ширина
+  width: 420px;
   min-width: 280px;
   max-width: 400px;
   flex-shrink: 0;
@@ -12,7 +12,6 @@
     width: 0 !important;
     height: 0 !important;
   }
-
   scrollbar-width: none;
   scrollbar-color: transparent transparent;
 
@@ -30,13 +29,16 @@
         .account-folder__chevron {
           display: none !important;
         }
+
         .account-folder__icon {
           margin: 0;
         }
+
         .account-folder {
           padding: 0 12px;
           justify-content: center;
         }
+
         .account-folder__sub-accounts,
         .sidebar__item {
           display: none !important;
@@ -55,7 +57,7 @@
 }
 
 .sidebar__nav {
-  padding: 8px 20px;
+  padding: 8px 8px;
   overflow-y: auto;
   height: calc(100% - 56px);
 
@@ -63,7 +65,6 @@
     width: 0 !important;
     height: 0 !important;
   }
-
   scrollbar-width: none;
   scrollbar-color: transparent transparent;
 }
