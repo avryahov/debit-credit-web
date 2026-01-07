@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './pin-input.module.scss';
 
 export const PinInput = ({ count = 4 }) => {
@@ -13,4 +14,8 @@ export const PinInput = ({ count = 4 }) => {
       ))}
     </div>
   );
+};
+
+PinInput.propTypes = {
+  count: PropTypes.number.isRequired,
 };

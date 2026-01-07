@@ -1,7 +1,8 @@
 module.exports = {
-  extends: ["react-app", "plugin:prettier/recommended"],
+  extends: ['react-app', 'plugin:prettier/recommended'],
   rules: {
-    "prettier/prettier": "error",
+    'prettier/prettier': 'error',
+    'react/prop-types': ['error', { skipUndeclared: false }],
   },
   env: {
     browser: true,
@@ -11,7 +12,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
 };

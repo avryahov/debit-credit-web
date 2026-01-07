@@ -1,78 +1,86 @@
-// Переменные — как в HTML-эталоне
-:root {
-  --accent-blue: #4a90e2;
-  --text-light: #ffffff;
-  --bg-dark: #0f0f0f;
-  --bg-item: rgba(30, 30, 30, 0.7);
-  --bg-sub: rgba(40, 40, 40, 0.6);
-  --border-light: rgba(255, 255, 255, 0.05);
-  --hover-bg: rgba(40, 40, 40, 0.8);
-  --open-bg: rgba(50, 50, 50, 0.9);
-  --open-border: rgba(74, 144, 226, 0.3);
-  --positive: #4caf50;
-  --negative: #f44336;
-  --font-family-mono:
-    'SFMono-Regular', 'SF Mono', ui-monospace, Consolas, 'Liberation Mono',
-    Menlo, monospace;
-  --radius: 16px;
-  --row-height: 56px;
-  --sub-gap: 8px;
-  --name-max-width: 180px;
-}
+// === Переменные ===
+$sub-account-height: var(--row-height);
+$padding-x: 16px;
+$sub-account-icon-width: 24px;
+$sub-account-chevron-width: 24px;
+$sub-account-gap-icon: 8px;
+$sub-account-gap-name: 8px;
 
+// === Стили ===
 .sub-account {
   background: var(--bg-sub);
   border-radius: 12px;
-  padding: 0 16px;
+  padding: 0 $padding-x;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  height: var(--row-height);
+  height: $sub-account-height;
   color: var(--text-light);
   font-family: var(--font-family-mono);
   font-size: 14px;
 
   &:hover {
-    background: rgba(50, 50, 50, 0.7);
+    background: rgba(19, 18, 18, 0.7);
   }
 
   &__icon {
-    color: var(--accent-blue);
-    font-size: 18px;
-    opacity: 0.8;
-    width: 20px;
+    width: $sub-account-icon-width;
     text-align: center;
+    flex-shrink: 0;
+    margin-right: $sub-account-gap-icon;
+    color: var(--accent-blue);
+    opacity: 0.8;
+    font-size: 18px;
   }
 
   &__name {
     flex-grow: 1;
+    min-width: 0;
+    max-width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 160px;
-  }
-
-  &__balance {
-    display: flex;
-    align-items: center;
-    min-width: 100px;
-    justify-content: flex-end;
-    gap: 3px;
-    font-size: 14px;
+    margin-right: $sub-account-gap-name;
     font-weight: 500;
 
+    // Убираем display: none на маленьких экранах — теперь хук сам сократит текст
+    // @media (max-width: 360px) {
+    //   display: none;
+    // }
+  }
+
+  &__balance-container {
+    display: flex;
+    align-items: center;
+    gap: 6px; // отступ между балансом и валютой
+    flex-shrink: 0;
+    white-space: nowrap; // чтобы баланс и валюта не разрывались
+  }
+
+  &__balance-value {
+    text-align: right;
+    flex-shrink: 0;
+    font-weight: 500;
     &--negative {
       color: var(--negative);
     }
-
     &--positive {
       color: var(--positive);
     }
+  }
 
-    &-currency {
-      color: #aaa;
-      font-size: 14px;
-    }
+  &__balance-currency {
+    text-align: left;
+    flex-shrink: 0;
+    color: #aaa;
+    font-size: 14px;
+  }
+
+  &__chevron {
+    width: $sub-account-chevron-width;
+    text-align: center;
+    flex-shrink: 0;
+    color: #aaa;
+    font-size: 16px;
   }
 }

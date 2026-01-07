@@ -1,71 +1,85 @@
-import { useAccordion } from '../../../../shared/hooks/use-accordion';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { useAdaptiveText } from 'shared/hooks/use-adaptive-text';
+import { formatBalance, isBalanceNegative } from 'shared/utils/format-balance';
 import styles from './account-folder.module.scss';
 
 export const AccountFolder = ({
-  icon,
+  icon = '📁',
   name,
   balance,
-  transactionId,
-  children,
+  children = [],
   onFolderClick,
-  isFolder = false,
 }) => {
-  const { isOpen, toggle } = useAccordion(false);
-
-  const handleClick = () => {
-    if (onFolderClick) onFolderClick(transactionId);
-    if (isFolder) toggle();
+  const [isOpen, setIsOpen] = useState(false);
+  const isFolder = children.length > 0;
+  const toggle = () => {
+    if (onFolderClick) {
+      onFolderClick();
+    }
+    if (isFolder) {
+      setIsOpen(!isOpen);
+    }
   };
 
-  const hasBalance = balance != null && balance !== '';
-  const isNegative =
-    hasBalance && parseFloat(balance.replace(/\s/g, '').replace(',', '.')) < 0;
-  const balanceClass = isNegative
-    ? styles['account-folder__balance--negative']
-    : styles['account-folder__balance--positive'];
+  let displayBalance = '';
+  let isNegative = false;
+  if (balance) {
+    displayBalance = formatBalance(balance);
+    isNegative = isBalanceNegative(balance);
+  }
+
+  // Создаем ref для элемента с названием
+  const nameRef = React.useRef(null);
+  const adaptiveName = useAdaptiveText(name, nameRef);
 
   return (
-    <div className={styles['account-folder-wrapper']}>
+    <div
+      className={`${styles['account-folder-wrapper']} ${
+        isOpen ? styles['account-folder-wrapper--open'] : ''
+      }`}
+    >
       <div
-        className={`${styles['account-folder']} ${isOpen ? styles['account-folder--open'] : ''}`}
-        onClick={handleClick}
-        aria-expanded={isFolder ? isOpen : undefined}
-        aria-controls={isFolder ? `sub-accounts-${transactionId}` : undefined}
-        role={isFolder ? 'button' : undefined}
+        className={styles['account-folder']}
+        onClick={toggle}
+        role="button"
         tabIndex={0}
+        aria-expanded={isOpen}
+        aria-controls={
+          isFolder ? `sub-accounts-${name.replace(/\s+/g, '-')}` : undefined
+        }
       >
         <span className={styles['account-folder__icon']}>{icon}</span>
-        <span className={styles['account-folder__name']}>{name}</span>
-
-        {hasBalance && (
+        <span
+          className={styles['account-folder__name']}
+          title={name}
+          ref={nameRef} // 👈 привязываем ref
+        >
+          {adaptiveName}
+        </span>
+        {/* Объединяем баланс и валюту в один блок */}
+        <span className={styles['account-folder__balance-container']}>
           <span
-            className={`${styles['account-folder__balance']} ${balanceClass}`}
+            className={`${styles['account-folder__balance-value']} ${
+              isNegative
+                ? styles['account-folder__balance-value--negative']
+                : ''
+            }`}
           >
-            <span className={styles['account-folder__balance-value']}>
-              {new Intl.NumberFormat('ru-RU', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }).format(
-                parseFloat(balance.replace(/\s/g, '').replace(',', '.'))
-              )}
-            </span>
-            <span className={styles['account-folder__balance-currency']}>
-              ₽
-            </span>
+            {displayBalance}
           </span>
-        )}
-
-        {isFolder && (
-          <span className={styles['account-folder__chevron']}>
-            <i className="fa-solid fa-chevron-right"></i>
+          <span className={styles['account-folder__balance-currency']}>
+            {balance ? '₽' : ''}
           </span>
-        )}
+        </span>
+        <span className={styles['account-folder__chevron']}>
+          {isFolder && <i className="fa-solid fa-chevron-right"></i>}
+        </span>
       </div>
-
       {isFolder && (
         <div
-          id={`sub-accounts-${transactionId}`}
-          className={`${styles['account-folder__sub-accounts']} ${isOpen ? styles['account-folder__sub-accounts--open'] : ''}`}
+          id={`sub-accounts-${name.replace(/\s+/g, '-')}`}
+          className={styles['account-folder__sub-accounts']}
           aria-hidden={!isOpen}
         >
           {children}
@@ -73,6 +87,20 @@ export const AccountFolder = ({
       )}
     </div>
   );
+};
+
+AccountFolder.propTypes = {
+  icon: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  children: PropTypes.arrayOf(PropTypes.node),
+  onFolderClick: PropTypes.func,
+};
+
+AccountFolder.defaultProps = {
+  icon: '📁',
+  children: [],
+  onFolderClick: undefined,
 };
 
 export default AccountFolder;

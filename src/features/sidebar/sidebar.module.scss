@@ -1,5 +1,8 @@
 .sidebar {
-  width: 450px;
+  width: 420px; // Базовая ширина
+  min-width: 280px;
+  max-width: 400px;
+  flex-shrink: 0;
   background-color: var(--background-dark);
   border-right: 1px solid var(--input-border);
   transition: width 0.3s ease;
@@ -52,7 +55,7 @@
 }
 
 .sidebar__nav {
-  padding: 8px 0;
+  padding: 8px 20px;
   overflow-y: auto;
   height: calc(100% - 56px);
 

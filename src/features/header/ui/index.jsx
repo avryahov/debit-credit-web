@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from '../header.module.scss';
 
 export const Header = ({ onToggleSidebar }) => {
@@ -21,4 +22,8 @@ export const Header = ({ onToggleSidebar }) => {
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  onToggleSidebar: PropTypes.func.isRequired,
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { MOCK_ACCOUNTS_TREE } from '../../shared/constants/mock-accounts-tree';
 import styles from './sidebar.module.scss';
 import { AccountFolder, SubAccount } from './ui';
@@ -40,6 +41,10 @@ export const Sidebar = ({ isCollapsed }) => {
       </div>
     </aside>
   );
+};
+
+Sidebar.propTypes = {
+  isCollapsed: PropTypes.bool.isRequired,
 };
 
 export default Sidebar;
