@@ -1,0 +1,40 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+.main-layout__content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.main-layout__main {
+  flex: 1;
+  min-width: 600px;
+  overflow-y: auto;
+  background-color: var(--input-bg);
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 8px; /* Ширина скроллбара */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--background-dark); /* Цвет фона полосы прокрутки */
+    border-radius: 4px; /* Скругление фона (опционально) */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--accent-blue); /* Цвет ползунка */
+    border-radius: 4px; /* Скругление ползунка */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #3a7bc8; /* Цвет ползунка при наведении (темнее чем --accent-blue) */
+  }
+}

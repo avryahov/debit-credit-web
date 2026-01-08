@@ -1,0 +1,78 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-family-mono);
+
+  table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--input-border);
+    font-size: 0.875rem;
+  }
+
+  th {
+    background-color: var(--input-bg);
+    font-weight: 600;
+  }
+
+  tr:hover {
+    background-color: var(--input-border);
+  }
+
+  /* === Анимация обновления строк === */
+  .row--fade-out {
+    animation: fadeOut 150ms ease-out forwards;
+  }
+
+  .row--fade-in {
+    animation: fadeIn 200ms ease-in 50ms forwards;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-3px);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* === Стили ячеек === */
+  .cell--amount {
+    text-align: right;
+    font-weight: 500;
+  }
+
+  .cell--negative {
+    color: var(--negative);
+  }
+
+  .cell--positive {
+    color: var(--positive);
+  }
+
+  .empty-cell {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 1rem;
+  }
+}

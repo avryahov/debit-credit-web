@@ -1,0 +1,119 @@
+// === Переменные ===
+$account-folder-height: var(--row-height);
+$padding-x: 8px;
+$account-folder-icon-width: 24px;
+$account-folder-balance-value-width: 90px;
+$account-folder-currency-width: 20px;
+$account-folder-chevron-width: 24px;
+$account-folder-gap-icon: 8px;
+$account-folder-gap-name: 8px;
+
+// === Стили ===
+.account-folder-wrapper {
+  &--open {
+    .account-folder__sub-accounts {
+      opacity: 1;
+      height: auto;
+    }
+    .account-folder__chevron {
+      &--rotated {
+        transform: rotate(90deg);
+        transition: transform 0.2s ease;
+      }
+    }
+    .account-folder__chevron i {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.account-folder {
+  background: var(--bg-item);
+  border-radius: 0;
+  padding: 0 $padding-x;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $account-folder-height;
+  color: var(--text);
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover {
+    background: rgba(19, 18, 18, 0.7);
+  }
+
+  &__icon {
+    width: $account-folder-icon-width;
+    text-align: center;
+    flex-shrink: 0;
+    margin-right: $account-folder-gap-icon;
+    color: var(--accent-blue);
+    opacity: 0.8;
+    font-size: 18px;
+  }
+
+  &__name {
+    flex-grow: 1;
+    min-width: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: $account-folder-gap-name;
+    font-weight: 500;
+
+    @media (max-width: 360px) {
+      display: none;
+    }
+  }
+
+  &__balance-value {
+    width: $account-folder-balance-value-width;
+    text-align: right;
+    flex-shrink: 0;
+    font-weight: 500;
+
+    &--negative {
+      color: var(--negative);
+    }
+
+    &--positive {
+      color: var(--positive);
+    }
+  }
+
+  &__balance-currency {
+    width: $account-folder-currency-width;
+    text-align: left;
+    flex-shrink: 0;
+    color: #aaa;
+    font-size: 14px;
+    margin-left: 6px;
+  }
+
+  &__chevron {
+    width: $account-folder-chevron-width;
+    text-align: center;
+    flex-shrink: 0;
+    color: #aaa;
+    font-size: 16px;
+    transition: transform 0.2s;
+
+    i {
+      display: inline-block;
+    }
+  }
+}
+
+.account-folder__sub-accounts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sub-gap);
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
