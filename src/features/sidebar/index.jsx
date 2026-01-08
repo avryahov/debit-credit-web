@@ -12,29 +12,54 @@ export const Sidebar = ({ isCollapsed, onSelectAccount }) => {
         <h3>Счета</h3>
       </div>
       <div className={styles.sidebar__nav}>
-        {MOCK_ACCOUNTS_TREE.map((folder) => (
-          <div key={folder.id} className={styles['sidebar__item']}>
-            <AccountFolder
-              icon={folder.icon}
-              name={folder.name}
-              balance={folder.balance}
-              transactionId={folder.transactionId}
-              isFolder={folder.isFolder}
-              onSelectAccount={onSelectAccount}
-            >
-              {folder.children?.map((child) => (
-                <SubAccount
-                  key={child.id}
-                  icon={child.icon}
-                  name={child.name}
-                  balance={child.balance}
-                  transactionId={child.transactionId}
-                  onSelectAccount={onSelectAccount}
-                />
-              ))}
-            </AccountFolder>
-          </div>
-        ))}
+        {/* === ОСНОВНОЙ КОНТЕНТ — ПАПКИ И СЧЕТА === */}
+        <div className={styles.sidebar__content}>
+          {MOCK_ACCOUNTS_TREE.map((folder) => (
+            <div key={folder.id} className={styles['sidebar__item']}>
+              <AccountFolder
+                icon={folder.icon}
+                name={folder.name}
+                balance={folder.balance}
+                transactionId={folder.transactionId}
+                isFolder={folder.isFolder}
+                onSelectAccount={onSelectAccount}
+              >
+                {folder.children?.map((child) => (
+                  <SubAccount
+                    key={child.id}
+                    icon={child.icon}
+                    name={child.name}
+                    balance={child.balance}
+                    transactionId={child.transactionId}
+                    onSelectAccount={onSelectAccount}
+                  />
+                ))}
+              </AccountFolder>
+            </div>
+          ))}
+        </div>
+
+        {/* === ФИКСИРОВАННЫЕ КНОПКИ В НИЗУ === */}
+        <div className={styles['sidebar__actions']}>
+          <button
+            className={styles['sidebar__action-button']}
+            onClick={() => alert('Добавить счет')}
+          >
+            Добавить счет...
+          </button>
+          <button
+            className={styles['sidebar__action-button']}
+            onClick={() => alert('Новая папка')}
+          >
+            Новая папка...
+          </button>
+          <button
+            className={styles['sidebar__action-button']}
+            onClick={() => alert('Новая транзакция')}
+          >
+            Новая транзакция...
+          </button>
+        </div>
       </div>
     </aside>
   );
