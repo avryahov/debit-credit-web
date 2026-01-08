@@ -6,14 +6,6 @@
   background-color: var(--background-dark);
   border-right: 1px solid var(--input-border);
   transition: width 0.3s ease;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 0 !important;
-    height: 0 !important;
-  }
-  scrollbar-width: none;
-  scrollbar-color: transparent transparent;
 
   &--collapsed {
     width: 0px;
@@ -44,7 +36,7 @@
 }
 
 .sidebar__header {
-  height: 56px;
+  height: var(--row-height);
   display: flex;
   align-items: center;
   padding: 0 20px;
@@ -55,24 +47,51 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: calc(100% - 56px);
+  height: calc(100% - var(--row-height));
 
   &::-webkit-scrollbar {
-    width: 0 !important;
-    height: 0 !important;
+    width: 8px; /* Ширина скроллбара */
   }
-  scrollbar-width: none;
-  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar-track {
+    background: var(--background-dark); /* Цвет фона полосы прокрутки */
+    border-radius: 4px; /* Скругление фона (опционально) */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--accent-blue); /* Цвет ползунка */
+    border-radius: 4px; /* Скругление ползунка */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #3a7bc8; /* Цвет ползунка при наведении (темнее чем --accent-blue) */
+  }
 }
 
-/* === ОСНОВНОЙ КОНТЕНТ — ПАПКИ И СЧЕТА === */
 .sidebar__content {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 8px 8px;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    width: 8px; /* Ширина скроллбара */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--background-dark); /* Цвет фона полосы прокрутки */
+    border-radius: 4px; /* Скругление фона (опционально) */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--accent-blue); /* Цвет ползунка */
+    border-radius: 4px; /* Скругление ползунка */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #3a7bc8; /* Цвет ползунка при наведении (темнее чем --accent-blue) */
+  }
 }
 
-/* === ФИКСИРОВАННЫЕ КНОПКИ В НИЗУ === */
 .sidebar__actions {
   flex-shrink: 0;
   background-color: var(--background-dark);
@@ -98,7 +117,7 @@
   transition: background-color 0.2s ease;
   width: 100%;
   box-sizing: border-box;
-  height: var(--row-height); /* Высота как у AccountFolder */
+  height: var(--row-height);
 
   &:hover {
     background-color: rgba(19, 18, 18, 0.7);

@@ -14,7 +14,12 @@ $account-folder-gap-name: 8px;
     .account-folder__sub-accounts {
       opacity: 1;
       height: auto;
-      padding: var(--sub-gap) 0 0 0;
+    }
+    .account-folder__chevron {
+      &--rotated {
+        transform: rotate(90deg);
+        transition: transform 0.2s ease;
+      }
     }
     .account-folder__chevron i {
       transform: rotate(90deg);
@@ -24,7 +29,7 @@ $account-folder-gap-name: 8px;
 
 .account-folder {
   background: var(--bg-item);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 0 $padding-x;
   display: flex;
   align-items: center;
@@ -34,6 +39,8 @@ $account-folder-gap-name: 8px;
   font-family: var(--font-family-mono);
   font-size: 14px;
   cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
 
   &:hover {
     background: rgba(19, 18, 18, 0.7);
@@ -109,18 +116,4 @@ $account-folder-gap-name: 8px;
   height: 0;
   opacity: 0;
   overflow: hidden;
-  transition:
-    height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.2s ease;
-
-  .sub-account {
-    padding-left: 48px;
-  }
-}
-
-.account-folder__chevron {
-  &--rotated {
-    transform: rotate(90deg);
-    transition: transform 0.2s ease;
-  }
 }
